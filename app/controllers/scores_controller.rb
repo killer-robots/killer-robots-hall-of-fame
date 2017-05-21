@@ -1,6 +1,11 @@
 class ScoresController < ApplicationController
   before_action :set_score, only: [:show, :edit, :update, :destroy]
 
+  def submit_score
+    Score.create(player: params[:player], points: params[:points])
+    head :ok
+  end
+
   # GET /scores
   # GET /scores.json
   def index
